@@ -76,7 +76,7 @@ const SideBar = () => {
   ];
 
   return isNavBarOpen ? (
-    <div className="w-[15%] px-2 py-2 min-h-[92vh] max-h-[92vh] z-50 fixed flex items-center flex-col overflow-auto scrollBar pt-0 shadow-xl">
+    <div className="w-[15%] px-2 py-2 min-h-[92vh] max-h-[92vh] z-50 fixed flex items-center flex-col overflow-auto scrollBar pt-0 pb-0">
       <>
         <ul className="relative w-[100%] py-2 border-b  ">
           {mainTags.map((tag) => (
