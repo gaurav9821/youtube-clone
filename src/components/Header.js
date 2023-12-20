@@ -6,11 +6,24 @@ import {
   MicSVG,
   UserSVG,
 } from "../utils/images";
+import { useDispatch } from "react-redux";
+import { toggleNavBar } from "../utils/appSlice";
+
 function Header() {
+  //Dispatch toggle Action
+  const dispatch = useDispatch();
+
+  const handleNavBar = () => {
+    dispatch(toggleNavBar());
+  };
+
   return (
     <div className="sticky flex justify-between items-center h-[56px] py-[0px] px-[1rem] top-0 w-[100%] z-[97] bg-[#ffffff]">
       <div className="flex items-center w-[11rem gap-[0.5rem]">
-        <div className="cursor-pointer w-[40px] h-[40px] p-[8px] justify-center flex items-center hover:bg-[#0000002e] rounded-[20px]">
+        <div
+          onClick={handleNavBar}
+          className="cursor-pointer w-[40px] h-[40px] p-[8px] justify-center flex items-center hover:bg-[#0000002e] rounded-[20px]"
+        >
           <HamBurgerIcon />
         </div>
         <div className="w-[129px] py-[18px] pl-[16px] pr-[14px]">

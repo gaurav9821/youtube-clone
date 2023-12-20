@@ -17,11 +17,15 @@ import {
   TwitterSVG,
   PortSVG,
 } from "../utils/images";
+import { useSelector } from "react-redux";
+import appStore from "../utils/store";
 
 const SideBar = () => {
+  const isNavBarOpen = useSelector((appStore) => appStore.app.isNavBarOpen);
+
   const mainTags = [
     [<HomeSVG />, "Home"],
-    [<LikeButtonSVG />, "Liked videos"],
+    [<LikeButtonSVG />, "Liked Videos"],
     [<HistorySVG />, "History"],
     [<WatchLaterSVG />, "Watch later"],
     [<SubsSVG />, "Subscription"],
@@ -70,9 +74,8 @@ const SideBar = () => {
       fullname: "Youtube Kids",
     },
   ];
-  const sideBarOpen = false;
-  // border-b-[1px] border-solid border-[rgba(0,0,0,0.1)]
-  return sideBarOpen ? (
+
+  return isNavBarOpen ? (
     <div className="w-[15%] px-2 py-2 min-h-[92vh] max-h-[92vh] z-50 fixed flex items-center flex-col overflow-auto scrollBar pt-0 shadow-xl">
       <>
         <ul className="relative w-[100%] py-2 border-b  ">
@@ -174,7 +177,7 @@ const SideBar = () => {
       </>
     </div>
   ) : (
-    <div className="w-[8%] pl-5 py-2 min-h-[92vh] max-h-[92vh] fixed flex items-center flex-col overflow-auto scrollBar gap-4 ">
+    <div className="w-[7%] pl-5 py-2 min-h-[92vh] max-h-[92vh] fixed flex items-center flex-col overflow-auto scrollBar gap-4  ">
       {mainTags.map((tag) => (
         <a
           to={
@@ -182,7 +185,7 @@ const SideBar = () => {
               ? "/"
               : `/${tag[1].replaceAll(" ", "").toLowerCase()}`
           }
-          className="hover:font-bold hover:bg-gray-200 hover:rounded-[10px] outline-0 hover:px-[0px] hover:pt-[16px] hover:pb-[14px] flex flex-col py-2 font-semibold w-full gap-1"
+          className="hover:font-bold flex flex-col py-2 font-semibold w-full gap-1 hover:bg-gray-200 hover:rounded-[10px] outline-0 hover:px-[4px] hover:pt-[16px] hover:pb-[14px]"
         >
           <span className="self-start">{tag[0]}</span>
           <small className="self-start">{tag[1]}</small>
