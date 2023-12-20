@@ -22,7 +22,7 @@ function Header() {
           <input
             type="text"
             placeholder="Search"
-            className="w-[100%] h-[100%] pt-0 pr-[15px] pb-0 pl-0 text-[16px] font-[400] font-mono text-[#0f0f0f] bg-[#ffffff outline-none"
+            className="w-[100%] h-[100%] pt-0 pr-[15px] pb-0 pl-0 text-[16px] font-[400] text-[#0f0f0f] bg-[#ffffff outline-none"
           />
           <div className="absolute h-[100%] w-[65px] top-0 right-0 pt-[8px] pr-[0px] pb-[0px] pl-[22px] bg-[#f8f8f8] hover:bg-[#0000002e] text-[#0f0f0f] fill-[#0f0f0f] rounded-[0px_40px_40px_0px] b-[1px] border-solid border-[#d3d3d3] cursor-pointer">
             <SearchSVG />
