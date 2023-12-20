@@ -3,8 +3,10 @@ import ButtonLists from "./ButtonLists";
 import appStore from "../utils/store";
 import { fetchTagsUrl } from "../utils/apiCalls";
 import { useState, useEffect } from "react";
+import VideoContainer from "./VideoContainer";
 
 function MainVideoContainer() {
+  //TAGS API CALL
   const [tags, setTags] = useState([]);
   async function tagsFetcher() {
     try {
@@ -24,6 +26,7 @@ function MainVideoContainer() {
 
   const isNavBarOpen = useSelector((appStore) => appStore.app.isNavBarOpen);
   let defaultStyle = isNavBarOpen ? "w-[85%] ml-[15%]" : "w-[92%] ml-[8%]";
+
   return (
     <div
       className={
@@ -34,6 +37,9 @@ function MainVideoContainer() {
     >
       <section className="w-[100%] flex gap-3 whitespace-nowrap relative pb-2 overflow-x-scroll no-scrollbar">
         <ButtonLists allTags={tags} />
+      </section>
+      <section className="w-[100%] flex flex-wrap gap-2 justify-between overflow-hidden pt-6">
+        <VideoContainer />
       </section>
     </div>
   );
