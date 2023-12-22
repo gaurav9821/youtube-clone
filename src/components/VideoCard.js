@@ -23,7 +23,7 @@ const VideoCard = ({
   relatedCard = false,
 }) => {
   const { contentDetails, snippet, statistics, id } = info;
-  // console.log(data);
+  // console.log(snippet);
   // const watchLater = useSelector((store) => store.library.watchLater);
   // const isVideoSetToWatchLater = watchLater?.find((vid) => vid.id === id);
   const isVideoSetToWatchLater = false;
@@ -32,9 +32,9 @@ const VideoCard = ({
     channelId,
     channelTitle,
     publishedAt,
-    thumbnails: {
-      high: { url, height, width },
-    },
+    // thumbnails: {
+    //   maxres: { url, height, width },
+    // },
     tags,
     title,
     description,
@@ -61,7 +61,7 @@ const VideoCard = ({
   widthString = searchFeedVideo ? "w-[90%]" : widthString;
   widthString = relatedCard ? "w-full" : widthString;
 
-  let bottomPosString = isNavBarOpen ? "bottom-2" : "bottom-6";
+  let bottomPosString = "bottom-2";
   bottomPosString = relatedCard ? "bottom-4" : bottomPosString;
   // const navigate = useNavigate();
 
@@ -77,14 +77,14 @@ const VideoCard = ({
         searchFeedVideo ? "gap-2" : "gap-0"
       } ${relatedCard && "gap-1"} relative flex ${
         !searchFeedVideo && "flex-col"
-      } text-white mb-[16px] ${relatedCard && "mb-0"} `}
+      } text-white mb-[10px] ${relatedCard && "mb-0"} `}
     >
       <section
         onMouseOver={() => {
           setTimer(
             setTimeout(() => {
               setIsPlayingVideo(true);
-            }, 1000)
+            }, 2000)
           );
         }}
         onMouseOut={() => {
@@ -104,7 +104,11 @@ const VideoCard = ({
         {!isPlayingVideo ? (
           <>
             <img
-              src={url}
+              src={
+                snippet?.thumbnails?.maxres?.url
+                  ? snippet?.thumbnails?.maxres?.url
+                  : snippet?.thumbnails?.high?.url
+              }
               alt=""
               className="cursor-pointer h-[100%] w-[100%]  object-cover rounded-[10px]"
             />
@@ -158,7 +162,7 @@ const VideoCard = ({
           {!searchFeedVideo && (
             <p
               // onClick={() => navigate(`/profile?cId=${channelId}`)}
-              className="text-stone-500 my-1 text-sm cursor-pointer"
+              className="text-stone-600 my-1 text-sm cursor-pointer"
             >
               {channelTitle}
             </p>
@@ -178,21 +182,21 @@ const VideoCard = ({
               <p
                 className={`${
                   relatedCard && "text-sm"
-                } cursor-pointer text-stone-500`}
+                } cursor-pointer text-stone-600`}
                 // onClick={() => navigate(`/profile?cId=${channelId}`)}
               >
                 {channelTitle}
               </p>
             </span>
           )}
-          <span className="text-stone-400 text-xs flex gap-2">
+          <span className="text-stone-600 text-xs flex gap-2">
             <p>{ViewsCounter(viewCount)} views</p>
             <p className="before:content-['•'] before:mr-1">
               {TimeCounter(publishedAt)}
             </p>
           </span>
           {!relatedCard && searchFeedVideo && (
-            <small className="line-clamp-1 text-stone-400">{description}</small>
+            <small className="line-clamp-1 text-stone-600">{description}</small>
           )}
         </span>
         <span
@@ -204,7 +208,7 @@ const VideoCard = ({
             <CiMenuKebab
               onClick={() => setShowOptions(true)}
               style={{ visibility: !showOptionBtn ? "hidden" : "" }}
-              size={relatedCard ? 16 : 20}
+              size={relatedCard ? 20 : 25}
               className={` text-black p-[1px] py-[2px] rounded-full ${
                 searchFeedVideo && "mt-1 justify-end"
               } cursor-pointer self-start`}
@@ -213,7 +217,7 @@ const VideoCard = ({
             <RxCross1
               onClick={() => setShowOptions(false)}
               style={{ visibility: !showOptionBtn ? "hidden" : "" }}
-              size={relatedCard ? 16 : 20}
+              size={relatedCard ? 20 : 25}
               className={`text-black p-[1px] py-[2px] rounded-full ${
                 searchFeedVideo && "mt-1 justify-end"
               } cursor-pointer self-start`}
@@ -221,10 +225,11 @@ const VideoCard = ({
           )}
           <section
             style={{ display: !showOptions ? "none" : "" }}
-            className={`w-[15vw]
-rounded-md absolute right-8 top-5 text-black bg-stone-100 ${
+            className={`w-[13vw] border-[1px] absolute right-8 top-5 text-black bg-[#ffffff] ${
               searchFeedVideo && !relatedCard && "top-1 right-28"
-            } ${searchFeedVideo && isNavBarOpen && "top-1 right-32"} `}
+            } ${
+              searchFeedVideo && isNavBarOpen && "top-1 right-32"
+            } py-[8px] px-[2px] shadow-[0px_4px_32px_0px_rgba(0, 0, 0, 0.1)] rounded-[12px] top-[30px]`}
           >
             {likedVideosCard && (
               <span
@@ -232,7 +237,7 @@ rounded-md absolute right-8 top-5 text-black bg-stone-100 ${
                   e.stopPropagation();
                   // dispatch(removeFromLikedVideos(id));
                 }}
-                className="flex py-[10px] rounded-md px-2 hover:bg-stone-400 hover:cursor-pointer items-center  gap-2 z-10"
+                className="flex py-[10px] rounded-md px-2 hover:bg-[#0000002e] hover:cursor-pointer items-center  gap-2 z-10"
               >
                 <AiOutlineDislike size={18} />
                 <p className="m-0">Dislike Video</p>
@@ -246,7 +251,7 @@ rounded-md absolute right-8 top-5 text-black bg-stone-100 ${
                 //   : dispatch(removeFromWatchLaterVideos(id));
                 setShowOptions(false);
               }}
-              className="flex py-[10px] rounded-md px-2 hover:bg-stone-400 hover:cursor-pointer items-center  gap-2 z-10"
+              className="flex py-[10px] rounded-md px-2 hover:bg-[#0000002e] hover:cursor-pointer items-center  gap-2 z-10"
             >
               <MdOutlineWatchLater size={18} />
               <p className="m-0">
@@ -262,7 +267,7 @@ rounded-md absolute right-8 top-5 text-black bg-stone-100 ${
                 setShowOptions(false);
                 toast.success("Link copied to clipboard!");
               }}
-              className="flex py-[10px] rounded-md  hover:bg-stone-200 hover:cursor-pointer items-center gap-2 px-2 "
+              className="flex py-[10px] rounded-md  hover:bg-[#0000002e] hover:cursor-pointer items-center gap-2 px-2 "
             >
               <FaShare size={18} />
               <p className="m-0">Share</p>

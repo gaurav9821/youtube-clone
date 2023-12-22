@@ -81,7 +81,7 @@ const SideBar = () => {
         <ul className="relative w-[100%] py-2 border-b  ">
           {mainTags.map((tag) => (
             <a
-              className="hover:bg-gray-200 flex px-4 py-2 w-[100%] font-semibold mb-1 rounded-md  gap-6 items-center"
+              className="hover:bg-gray-100 flex px-4 py-2 w-[100%] font-semibold mb-1 rounded-md  gap-6 items-center"
               key={tag[1]}
               to={
                 tag[1] === "Home"
@@ -100,7 +100,7 @@ const SideBar = () => {
         <ul className="relative w-[100%] pb-2 border-b ">
           {exploreTags.map((tag) => (
             <a
-              className="hover:bg-gray-200  flex px-4 py-2 w-[100%] font-semibold mb-1 rounded-md  gap-6 items-center"
+              className="hover:bg-gray-100  flex px-4 py-2 w-[100%] font-semibold mb-1 rounded-md  gap-6 items-center"
               key={tag[1]}
               to={`/explore?sq=${tag[1]}`}
             >
@@ -117,7 +117,7 @@ const SideBar = () => {
             const { src, profileId, fullname } = obj;
             return (
               <a
-                className="hover:bg-gray-200 flex px-4 py-2 w-[95%] font-semibold  rounded-md relative gap-5 items-center"
+                className="hover:bg-gray-100 flex px-4 py-2 w-[95%] font-semibold  rounded-md relative gap-5 items-center"
                 key={profileId}
                 to={`/profile?cId=${profileId}`}
               >
@@ -140,7 +140,7 @@ const SideBar = () => {
 
             return (
               <a
-                className="hover:bg-gray-200 flex px-4 py-2 w-[95%] font-semiboldbold  rounded-md relative gap-5 items-center"
+                className="hover:bg-gray-100 flex px-4 py-2 w-[95%] font-semiboldbold  rounded-md relative gap-5 items-center"
                 key={url}
                 to={url}
                 target="_blank"
@@ -177,7 +177,7 @@ const SideBar = () => {
       </>
     </div>
   ) : (
-    <div className="w-[7%] pl-5 py-2 min-h-[92vh] max-h-[92vh] fixed flex items-center flex-col overflow-auto scrollBar gap-4  ">
+    <div className=" w-[6%] py-2 min-h-[92vh] max-h-[92vh] fixed flex items-center flex-col overflow-auto scrollBar gap-4  ">
       {mainTags.map((tag) => (
         <a
           to={
@@ -185,10 +185,10 @@ const SideBar = () => {
               ? "/"
               : `/${tag[1].replaceAll(" ", "").toLowerCase()}`
           }
-          className="hover:font-bold flex flex-col py-2 font-semibold w-full gap-1 hover:bg-gray-200 hover:rounded-[10px] outline-0 hover:px-[4px] hover:pt-[16px] hover:pb-[14px]"
+          className="hover:font-bold px-[4px] flex items-center flex-col py-2 font-semibold w-full gap-1 hover:bg-gray-100 hover:rounded-[10px] outline-0 hover:px-[2px] hover:pt-[16px] hover:pb-[14px]"
         >
-          <span className="self-start">{tag[0]}</span>
-          <small className="self-start">{tag[1]}</small>
+          <span>{tag[0]}</span>
+          <small className="truncate">{tag[1]}</small>
         </a>
       ))}
     </div>

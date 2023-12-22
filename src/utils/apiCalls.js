@@ -5,7 +5,7 @@ export const fetchTagsUrl =
   API_KEY;
 
 export const API_CALL_URL =
-  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=15&regionCode=IN&key=" +
+  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=16&regionCode=IN&key=" +
   API_KEY;
 
 export const PROFILE_PICTURE_FETCHER = async (channelId) => {
@@ -18,5 +18,15 @@ export const PROFILE_PICTURE_FETCHER = async (channelId) => {
     return profilePictureUrl;
   } catch (e) {
     console.log("coudnt fetch channel profile picture");
+  }
+};
+
+export const moreVideosFetcherAPI = async (token) => {
+  try {
+    const res = await fetch(`${API_CALL_URL}&pageToken=${token}`);
+    const data = await res?.json();
+    if (data) return data;
+  } catch (err) {
+    console.log(err);
   }
 };

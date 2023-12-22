@@ -9,6 +9,9 @@ const appSlice = createSlice({
     toggleNavBar: (state, action) => {
       state.isNavBarOpen = !state.isNavBarOpen;
     },
+    openNavBar: (state, action) => {
+      state.isNavBarOpen = true;
+    },
   },
 });
 
