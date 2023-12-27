@@ -1,4 +1,4 @@
-const ButtonLists = ({ allTags }) => {
+const ButtonLists = ({ allTags, videoData }) => {
   return (
     <>
       <small className="text-white font-semibold rounded-lg bg-stone-800 p-2 px-3 cursor-pointer hover:bg-stone-300 whitespace-nowrap">

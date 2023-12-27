@@ -177,9 +177,10 @@ const SideBar = () => {
       </>
     </div>
   ) : (
-    <div className=" w-[6%] py-2 min-h-[92vh] max-h-[92vh] fixed flex items-center flex-col overflow-auto scrollBar gap-4  ">
+    <div className="w-[6%] py-2 min-h-[92vh] max-h-[92vh] fixed flex items-center flex-col overflow-auto scrollBar gap-4  ">
       {mainTags.map((tag) => (
         <a
+          key={tag[1]}
           to={
             tag[1] === "Home"
               ? "/"

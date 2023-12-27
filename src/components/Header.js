@@ -8,6 +8,7 @@ import {
 } from "../utils/images";
 import { useDispatch } from "react-redux";
 import { toggleNavBar } from "../utils/appSlice";
+import { Link } from "react-router-dom";
 
 function Header() {
   //Dispatch toggle Action
@@ -26,8 +27,11 @@ function Header() {
         >
           <HamBurgerIcon />
         </div>
+
         <div className="w-[129px] py-[18px] pl-[16px] pr-[14px]">
-          <YouTubeIcon />
+          <a href="/">
+            <YouTubeIcon />
+          </a>
         </div>
       </div>
       <div className="w-[40rem] flex items-center h-[40px] gap-[12px]">

@@ -12,8 +12,11 @@ const appSlice = createSlice({
     openNavBar: (state, action) => {
       state.isNavBarOpen = true;
     },
+    closeNavBar: (state, action) => {
+      state.isNavBarOpen = false;
+    },
   },
 });
 
-export const { toggleNavBar } = appSlice.actions;
+export const { toggleNavBar, openNavBar, closeNavBar } = appSlice.actions;
 export default appSlice.reducer;
