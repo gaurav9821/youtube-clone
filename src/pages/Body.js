@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-import MainVideoContainer from "../components/MainVideoContainer";
 import SideBar from "../components/SideBar";
 
 const Body = () => {

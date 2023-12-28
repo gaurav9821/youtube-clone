@@ -19,6 +19,7 @@ import {
 } from "../utils/images";
 import { useSelector } from "react-redux";
 import appStore from "../utils/store";
+import { Link } from "react-router-dom";
 
 const SideBar = () => {
   const isNavBarOpen = useSelector((appStore) => appStore.app.isNavBarOpen);
@@ -156,18 +157,21 @@ const SideBar = () => {
           })}
         </ul>
         <section className="flex mt-4 justify-between mb-2 gap-4 self-start px-4">
-          <a to="" target="_blank">
+          <Link
+            to="https://www.linkedin.com/in/gauravchachada/"
+            target="_blank"
+          >
             <LinkedinSVG />
-          </a>
-          <a to="" target="_blank">
+          </Link>
+          <Link to="" target="_blank">
             <TwitterSVG />
-          </a>
-          <a to="" target="_blank">
+          </Link>
+          <Link to="https://github.com/gaurav9821" target="_blank">
             <GitHubSVG />
-          </a>
-          <a to="" target="_blank">
+          </Link>
+          <Link to="https://gauravs-dev-portfolio.netlify.app/" target="_blank">
             <PortSVG />
-          </a>
+          </Link>
         </section>
         <small className="px-4 py-1 self-start text-stone-400">
           Note: This app is still under development. Please let me know if you
